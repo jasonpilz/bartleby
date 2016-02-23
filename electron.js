@@ -32,17 +32,17 @@ app.on('ready', function onReady() {
         titleBarStyle: 'hidden'
     });
 
-    delete mainWindow.module;
+  delete mainWindow.module;
 
+  mainWindow.loadURL(emberAppLocation);
+
+  mainWindow.webContents.on('did-fail-load', () => {
     mainWindow.loadURL(emberAppLocation);
+  });
 
-    mainWindow.webContents.on('did-fail-load', () => {
-        mainWindow.loadURL(emberAppLocation);
-    });
-
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 });
 
 exports.filesystem = filesystem;
