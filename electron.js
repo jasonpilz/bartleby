@@ -14,6 +14,12 @@ let filesystem = new FileBin(__dirname + '/notes', ['.txt', '.md', '.markdown'])
 electron.crashReporter.start();
 
 app.on('window-all-closed', function onWindowAllClosed() {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('window-all-closed', function onWindowAllClosed() {
   if (process.platform !== 'darwin') {
     app.quit();
   }
