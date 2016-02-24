@@ -42,11 +42,20 @@
               </li>
             {{/each}}
           </ul>
+
+          <div class="new-note">
+            {{input type="text"
+                    placeholder="New Note Title"
+                    value=newNoteTitle}}
+            {{#if newNoteTitle}}<button {{action 'createNote'}}>Create</button>{{/if}}
+          </div>
+
         </div>
       </div>
       <div class="pane">
         {{outlet}}
       </div>
+
     </div>
   </div>
 </div>
